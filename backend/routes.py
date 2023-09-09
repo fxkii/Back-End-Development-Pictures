@@ -60,7 +60,7 @@ def create_picture():
         if picture["id"] == check["id"]:
             return {"Message":f"picture with id {picture['id']} already present"}, 302
     data.append(picture)
-    return {"Message":"Picture successfully added"}, 201
+    return picture, 201
 ######################################################################
 # UPDATE A PICTURE
 ######################################################################
@@ -72,6 +72,7 @@ def update_picture(id):
     for check in data:
         if picture["id"] == check["id"]:
             check.update(picture)
+            return {"message":"picture successfully updated"}, 201
     return {"message":"picture not found"}, 404
 
 ######################################################################
